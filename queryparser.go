@@ -8,8 +8,8 @@ package queryparser
 
 import "strings"
 
-// Query contains everything necessary to pull specific filters, and everything
-// else, that originated from the original query string.
+// Query contains everything necessary to pull specific filters, and
+// everything else, that originated from the original query string.
 type Query struct {
 	// Orig is the original query string.
 	Orig string
