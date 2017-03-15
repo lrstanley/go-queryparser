@@ -117,22 +117,23 @@ func New(raw string, allowed []string) (qry Query) {
 
 	for i := 0; i < len(qry.Pretty); i++ {
 		j = strings.Index(qry.Pretty[i:], " ")
-		if j < 0 {
+		// At minimum it must be "a:b".
+		if j < 3 {
 			c = strings.Index(qry.Pretty[i:], ":")
-			if c < 0 {
+			// The colon can't be the first char.
+			if c < 1 {
 				// Assume it's nearing the end of the line, or there are no special
 				// filters.
 				tmp += qry.Pretty[i:]
 				break
 			}
-
-			j = len(qry.Pretty)
 		} else {
 			c = strings.Index(qry.Pretty[i:i+j], ":")
 		}
 
-		// Assume it's random, e.g. "something ".
-		if c < 0 {
+		// Assume it's random, e.g. "something ". The colon can't be the
+		// first char.
+		if c < 1 {
 			tmp += qry.Pretty[i : i+j+1]
 			i += j
 			continue
@@ -164,10 +165,20 @@ func New(raw string, allowed []string) (qry Query) {
 			qry.filters[name] = []string{}
 		}
 
-		values = strings.Split(qry.Pretty[i+c+1:i+j], ",")
+		if j < 3 {
+			values = strings.Split(qry.Pretty[i+c+1:], ",")
+		} else {
+			values = strings.Split(qry.Pretty[i+c+1:i+j], ",")
+		}
 
 		qry.filters[name] = append(qry.filters[name], values...)
-		i += j
+
+		if j >= 3 {
+			i += j
+			continue
+		}
+
+		break
 	}
 
 	// Strip out commas.

@@ -44,6 +44,14 @@ func TestNew(t *testing.T) {
 				"this": {"1"},
 			},
 		}},
+		{name: "Just a filter", args: args{raw: "this:test", allowed: []string{}}, wantQry: Query{
+			Orig:   "this:test",
+			Raw:    "",
+			Pretty: "this:test",
+			filters: map[string][]string{
+				"this": {"test"},
+			},
+		}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
