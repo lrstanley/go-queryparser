@@ -108,7 +108,7 @@ func New(raw string, allowed []string) (qry Query) {
 		return qry
 	}
 
-	var j int
+	var j, c int
 	var isin bool
 	var name, tmp string
 	var values []string
@@ -116,13 +116,16 @@ func New(raw string, allowed []string) (qry Query) {
 	for i := 0; i < len(qry.Pretty); i++ {
 		j = strings.Index(qry.Pretty[i:], " ")
 		if j < 0 {
-			// Assume it's nearing the end of the line, or there are no special
-			// filters.
-			tmp += qry.Pretty[i:]
-			break
+			c = strings.Index(qry.Pretty[i:], ":")
+			if c < 0 {
+				// Assume it's nearing the end of the line, or there are no special
+				// filters.
+				tmp += qry.Pretty[i:]
+				break
+			}
+		} else {
+			c = strings.Index(qry.Pretty[i:i+j], ":")
 		}
-
-		c := strings.Index(qry.Pretty[i:i+j], ":")
 
 		// Assume it's random, e.g. "something ".
 		if c < 0 {
