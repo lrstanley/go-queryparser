@@ -27,7 +27,7 @@ type Query struct {
 // Get returns the results of the filter if it exists, and if it successfully
 // found a result.
 func (q *Query) Get(name string) (results []string, ok bool) {
-	results, ok = q.filters[name]
+	results, ok = q.filters[strings.ToLower(name)]
 
 	return results, ok
 }
@@ -45,6 +45,13 @@ func (q *Query) GetOne(name string) string {
 	out := results[len(results)-1]
 
 	return out
+}
+
+// Has returns true if there is a filter matching the given name.
+func (q *Query) Has(name string) bool {
+	_, ok := q.filters[strings.ToLower(name)]
+
+	return ok
 }
 
 // IsZero checks to see if the query string parsed result is of a zero value,
