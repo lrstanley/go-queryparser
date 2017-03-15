@@ -1,0 +1,24 @@
+language: go
+go:
+- 1.8
+- tip
+before_install:
+- go get -u -v github.com/mattn/goveralls
+- go get -u -v github.com/golang/lint/golint
+script:
+- $HOME/gopath/bin/goveralls -service=travis-ci -v
+- $HOME/gopath/bin/golint -min_confidence 0.9 -set_exit_status
+- go tool vet -v -all .
+branches:
+  only:
+  - master
+notifications:
+  irc:
+    channels:
+    - irc.byteirc.org#L
+    template:
+    - "%{repository} #%{build_number} %{branch}/%{commit}: %{author} -- %{message}
+      %{build_url}"
+    on_success: change
+    on_failure: change
+    skip_join: false
