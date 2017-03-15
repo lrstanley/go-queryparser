@@ -6,7 +6,9 @@
 // This means only " _,-.:A-Za-z0-9" are allowed.
 package queryparser
 
-import "strings"
+import (
+	"strings"
+)
 
 // Query contains everything necessary to pull specific filters, and
 // everything else, that originated from the original query string.
@@ -123,6 +125,8 @@ func New(raw string, allowed []string) (qry Query) {
 				tmp += qry.Pretty[i:]
 				break
 			}
+
+			j = len(qry.Pretty)
 		} else {
 			c = strings.Index(qry.Pretty[i:i+j], ":")
 		}
