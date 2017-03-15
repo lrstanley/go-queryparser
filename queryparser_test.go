@@ -33,7 +33,7 @@ func TestNew(t *testing.T) {
 			Raw:    "a test",
 			Pretty: "this:1 is:foo a test",
 			filters: map[string][]string{
-				"this": []string{"1"}, "is": []string{"foo"},
+				"this": {"1"}, "is": {"foo"},
 			},
 		}},
 		{name: "Filters but only 'this' allowed", args: args{raw: "this:1 is:foo a test", allowed: []string{"this"}}, wantQry: Query{
@@ -41,7 +41,7 @@ func TestNew(t *testing.T) {
 			Raw:    "is:foo a test",
 			Pretty: "this:1 is:foo a test",
 			filters: map[string][]string{
-				"this": []string{"1"},
+				"this": {"1"},
 			},
 		}},
 	}
