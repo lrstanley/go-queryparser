@@ -1,13 +1,8 @@
 language: go
 go:
-- 1.8
 - tip
-before_install:
-- go get -u -v github.com/mattn/goveralls
-- go get -u -v github.com/golang/lint/golint
 script:
-- $HOME/gopath/bin/goveralls -service=travis-ci -v
-- $HOME/gopath/bin/golint -min_confidence 0.9 -set_exit_status
+- go test -v -timeout 1m -cpu 1,2,4 -count 4
 - go tool vet -v -all .
 branches:
   only:
