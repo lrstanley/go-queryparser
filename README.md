@@ -1,4 +1,4 @@
-# go-queryparser [![godoc](https://godoc.org/github.com/lrstanley/go-queryparser?status.png)](https://godoc.org/github.com/lrstanley/go-queryparser) [![goreport](https://goreportcard.com/badge/github.com/lrstanley/go-queryparser)](https://goreportcard.com/report/github.com/lrstanley/go-queryparser) [![build](https://travis-ci.org/lrstanley/go-queryparser.svg?branch=master)](https://travis-ci.org/lrstanley/go-queryparser)
+# go-queryparser [![godoc](https://godoc.org/github.com/lrstanley/go-queryparser?status.png)](https://godoc.org/github.com/lrstanley/go-queryparser) [![goreport](https://goreportcard.com/badge/github.com/lrstanley/go-queryparser)](https://goreportcard.com/report/github.com/lrstanley/go-queryparser) [![build](https://travis-ci.org/lrstanley/go-queryparser.svg?branch=master)](https://travis-ci.org/lrstanley/go-queryparser) [![gocover](http://gocover.io/_badge/github.com/lrstanley/go-queryparser)](https://gocover.io/github.com/lrstanley/go-queryparser)
 
 go-queryparser parses a common "q" http GET variable to strip out filters,
 which can be used for advanced searching.
