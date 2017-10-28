@@ -123,6 +123,7 @@ func New(raw string, allowed []string) (qry Query) {
 		j = strings.Index(qry.Pretty[i:], " ")
 		// At minimum it must be "a:b".
 		if j < 3 {
+			j = 0
 			c = strings.Index(qry.Pretty[i:], ":")
 			// The colon can't be the first char.
 			if c < 1 {
