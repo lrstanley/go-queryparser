@@ -1,7 +1,62 @@
 # go-queryparser [![godoc](https://godoc.org/github.com/lrstanley/go-queryparser?status.png)](https://godoc.org/github.com/lrstanley/go-queryparser) [![goreport](https://goreportcard.com/badge/github.com/lrstanley/go-queryparser)](https://goreportcard.com/report/github.com/lrstanley/go-queryparser) [![build](https://travis-ci.org/lrstanley/go-queryparser.svg?branch=master)](https://travis-ci.org/lrstanley/go-queryparser) [![codecov](https://codecov.io/gh/lrstanley/go-queryparser/branch/master/graph/badge.svg)](https://codecov.io/gh/lrstanley/go-queryparser)
 
 go-queryparser parses a common "q" http GET variable to strip out filters,
-which can be used for advanced searching.
+which can be used for advanced searching, like:
+
+```
+Hello World tags:example,world foo:"something quoted" author:lrstanley
+```
+
+## Use:
+
+This will pull from master (currently `v2`):
+
+```console
+$ go get -u -v github.com/lrstanley/go-queryparser
+```
+
+### v1
+
+```console
+$ go get -u -v gopkg.in/lrstanley/go-queryparser.v1
+```
+
+## Example:
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/lrstanley/go-queryparser"
+)
+
+func main() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		q := queryparser.Parse(r.FormValue("q"))
+		if q.Has("author") {
+			fmt.Fprintf(w, "filtering by author %q!\n", q.GetOne("author"))
+			return
+		}
+
+		fmt.Fprint(w, "no filtering requested!\n")
+	})
+
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+```console
+$ curl -s localhost:8080
+no filtering requested!
+$ curl -s 'localhost:8080?q=author:"liam"'
+filtering by author "liam"!
+```
+
+The main benefit is for user input boxes where you want additional filtering,
+like the Github issues search box, or similar.
 
 ## Contributing
 
