@@ -34,8 +34,8 @@ var cases = []caseArgs{
 		query: &Query{
 			Raw: "",
 			filters: map[string][]string{
-				"foo": []string{"bar"},
-				"bar": []string{"baz baz1"},
+				"foo": {"bar"},
+				"bar": {"baz baz1"},
 			},
 		},
 	},
@@ -54,8 +54,8 @@ var cases = []caseArgs{
 		query: &Query{
 			Raw: "",
 			filters: map[string][]string{
-				"foo": []string{"1", "2"},
-				"bar": []string{"3"},
+				"foo": {"1", "2"},
+				"bar": {"3"},
 			},
 		},
 	},
@@ -72,7 +72,7 @@ var cases = []caseArgs{
 		query: &Query{
 			Raw: "test",
 			filters: map[string][]string{
-				"foo": []string{"bar"},
+				"foo": {"bar"},
 			},
 		},
 	},
@@ -95,8 +95,8 @@ var cases = []caseArgs{
 		query: &Query{
 			Raw: "test \" :\" ",
 			filters: map[string][]string{
-				"foo": []string{"bar"},
-				"a":   []string{""},
+				"foo": {"bar"},
+				"a":   {""},
 			},
 		},
 	},
