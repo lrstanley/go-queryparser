@@ -77,7 +77,41 @@ var cases = []caseArgs{
 		},
 	},
 	{
-		name:  "trailing with random quotes",
+		name:  "trailing with single quote",
+		input: `foo:'bar' test`,
+		tokens: []tokenRef{
+			{tok: tokenIDENT, lit: "foo"},
+			{tok: tokenDELIM, lit: ":"},
+			{tok: tokenFIELD, lit: `'bar'`},
+			{tok: tokenWS, lit: " "},
+			{tok: tokenIDENT, lit: "test"},
+		},
+		query: &Query{
+			Raw: "test",
+			filters: map[string][]string{
+				"foo": {"bar"},
+			},
+		},
+	},
+	{
+		name:  "trailing with single and inner double quote",
+		input: `foo:'bar' test`,
+		tokens: []tokenRef{
+			{tok: tokenIDENT, lit: "foo"},
+			{tok: tokenDELIM, lit: ":"},
+			{tok: tokenFIELD, lit: `'ba"r'`},
+			{tok: tokenWS, lit: " "},
+			{tok: tokenIDENT, lit: "test"},
+		},
+		query: &Query{
+			Raw: "test",
+			filters: map[string][]string{
+				"foo": {"bar"},
+			},
+		},
+	},
+	{
+		name:  "trailing with random double quotes",
 		input: `foo:"bar" test " :" a:"`,
 		tokens: []tokenRef{
 			{tok: tokenIDENT, lit: "foo"},
@@ -93,10 +127,27 @@ var cases = []caseArgs{
 			{tok: tokenFIELD, lit: `"`},
 		},
 		query: &Query{
-			Raw: "test \" :\" ",
+			Raw: "test : ",
 			filters: map[string][]string{
 				"foo": {"bar"},
-				"a":   {""},
+				"a":   {},
+			},
+		},
+	},
+	{
+		name:  "strip DefaultCut",
+		input: `foo:"bar" te$st#!`,
+		tokens: []tokenRef{
+			{tok: tokenIDENT, lit: "foo"},
+			{tok: tokenDELIM, lit: ":"},
+			{tok: tokenFIELD, lit: `"bar"`},
+			{tok: tokenWS, lit: " "},
+			{tok: tokenIDENT, lit: "test"},
+		},
+		query: &Query{
+			Raw: "test",
+			filters: map[string][]string{
+				"foo": {"bar"},
 			},
 		},
 	},
@@ -129,6 +180,10 @@ func TestScanner(t *testing.T) {
 			for _, valid := range tt.tokens {
 				tr := s.nextToken()
 
+				// Make sure both have had their fair share of cutsets.
+				tr.lit = cutsetFunc(tr.lit, DefaultCut)
+				valid.lit = cutsetFunc(valid.lit, DefaultCut)
+
 				if tr.lit != valid.lit || tr.tok != valid.tok {
 					t.Fatalf("expected %#v but got %#v", valid, tr)
 				}
@@ -146,7 +201,7 @@ func TestScanner(t *testing.T) {
 func TestParser(t *testing.T) {
 	for _, tt := range cases {
 		t.Run("parser_"+tt.name, func(t *testing.T) {
-			p := New(tt.input, Options{Allowed: tt.allowed})
+			p := New(tt.input, Options{Allowed: tt.allowed, CutFn: DefaultCut})
 			qp := p.Parse()
 
 			if !reflect.DeepEqual(tt.query, qp) {

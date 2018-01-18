@@ -136,7 +136,9 @@ func scanMain(s *scanner) stateFn {
 		s.emit(tokenDELIM)
 		return scanMain
 	case r == '"':
-		return scanQuote
+		return scanDoubleQuote
+	case r == '\'':
+		return scanSingleQuote
 	case isWord(r):
 		return scanWord
 	}
@@ -163,8 +165,29 @@ func scanWord(s *scanner) stateFn {
 	return scanMain
 }
 
-// scanQuote scans a quoted string.
-func scanQuote(s *scanner) stateFn {
+// scanSingleQuote scans a quoted string.
+func scanSingleQuote(s *scanner) stateFn {
+Loop:
+	for {
+		switch s.next() {
+		case '\\':
+			if r := s.next(); r != eof {
+				break
+			}
+			fallthrough
+		case eof:
+			// Should this be a req? Unterminated quoted string.
+			break Loop
+		case '\'':
+			break Loop
+		}
+	}
+	s.emit(tokenFIELD)
+	return scanMain
+}
+
+// scanDoubleQuote scans a quoted string.
+func scanDoubleQuote(s *scanner) stateFn {
 Loop:
 	for {
 		switch s.next() {

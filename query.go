@@ -24,13 +24,16 @@ type Query struct {
 }
 
 func (q *Query) add(key, val string) {
+	val = stripDuplicateWS(val)
 	var vals []string
-	if !strings.HasPrefix(val, `"`) {
+	if strings.HasPrefix(val, `"`) {
+		vals = []string{strings.Trim(val, `"`)}
+	} else if strings.HasPrefix(val, `'`) {
+		vals = []string{strings.Trim(val, `'`)}
+	} else {
 		vals = strings.FieldsFunc(val, func(r rune) bool {
 			return r == ','
 		})
-	} else {
-		vals = []string{strings.Trim(val, `"`)}
 	}
 
 	key = strings.ToLower(key)

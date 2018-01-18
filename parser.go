@@ -88,6 +88,7 @@ func (p *Parser) Parse() *Query {
 		case tokenEOF:
 			if p.opt.CutFn != nil {
 				qp.Raw = cutsetFunc(qp.Raw, p.opt.CutFn)
+				qp.Raw = stripDuplicateWS(qp.Raw)
 			}
 			return qp
 		default:
@@ -177,4 +178,12 @@ func cutsetFunc(input string, cutFn func(rune) bool) (out string) {
 func DefaultCut(r rune) (strip bool) {
 	return !unicode.IsLetter(r) && !unicode.IsNumber(r) && r != ' ' && r != '\t' &&
 		r != '_' && r != ',' && r != '-' && r != '.' && r != ':'
+}
+
+func stripDuplicateWS(val string) string {
+	for strings.Contains(val, "  ") {
+		val = strings.Replace(val, "  ", " ", -1)
+	}
+
+	return val
 }
