@@ -1,10 +1,9 @@
 language: go
 go:
-- 1.9
 - tip
 script:
 - GORACE="exitcode=1 halt_on_error=1" go test -v -coverprofile=coverage.txt -race -timeout 3m -count 3 -cpu 1,4
-- go tool vet -v -all .
+- go vet -v .
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 branches:
