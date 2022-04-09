@@ -77,13 +77,11 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		q := queryparser.Parse(r.FormValue("q"))
 		if q.Has("author") {
-			fmt.Fprintf(w, "filtering by author %q!
-", q.GetOne("author"))
+			fmt.Fprintf(w, "filtering by author %q!", q.GetOne("author"))
 			return
 		}
 
-		fmt.Fprint(w, "no filtering requested!
-")
+		fmt.Fprint(w, "no filtering requested!")
 	})
 
 	http.ListenAndServe(":8080", nil)
