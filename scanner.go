@@ -35,8 +35,7 @@ const (
 )
 
 func (i tokenRef) String() string {
-	switch i.tok {
-	case tokenEOF:
+	if i.tok == tokenEOF {
 		return "EOF"
 	}
 

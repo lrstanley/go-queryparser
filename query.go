@@ -26,6 +26,7 @@ type Query struct {
 func (q *Query) add(key, val string) {
 	val = stripDuplicateWS(val)
 	var vals []string
+
 	if strings.HasPrefix(val, `"`) {
 		vals = []string{strings.Trim(val, `"`)}
 	} else if strings.HasPrefix(val, `'`) {

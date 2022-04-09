@@ -107,7 +107,7 @@ func (p *Parser) scanField(ident tokenRef, qp *Query) {
 	if p.opt.Allowed != nil && len(p.opt.Allowed) > 0 {
 		var in bool
 		for i := 0; i < len(p.opt.Allowed); i++ {
-			if strings.ToLower(p.opt.Allowed[i]) == strings.ToLower(ident.lit) {
+			if strings.EqualFold(p.opt.Allowed[i], ident.lit) {
 				in = true
 				break
 			}
@@ -182,7 +182,7 @@ func DefaultCut(r rune) (strip bool) {
 
 func stripDuplicateWS(val string) string {
 	for strings.Contains(val, "  ") {
-		val = strings.Replace(val, "  ", " ", -1)
+		val = strings.ReplaceAll(val, "  ", " ")
 	}
 
 	return val
