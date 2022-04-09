@@ -70,7 +70,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/lrstanley/v2/go-queryparser"
+	"github.com/lrstanley/go-queryparser"
 )
 
 func main() {
