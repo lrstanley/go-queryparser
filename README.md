@@ -10,11 +10,11 @@
 
   <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/lrstanley/go-queryparser/master?style=flat-square">
 
-  <a href="https://pkg.go.dev/github.com/lrstanley/go-queryparser">
-    <img alt="Go Documentation" src="https://pkg.go.dev/badge/github.com/lrstanley/go-queryparser?style=flat-square">
+  <a href="https://pkg.go.dev/github.com/lrstanley/go-queryparser/v3">
+    <img alt="Go Documentation" src="https://pkg.go.dev/badge/github.com/lrstanley/go-queryparser/v3?style=flat-square">
   </a>
-  <a href="https://goreportcard.com/report/github.com/lrstanley/go-queryparser">
-    <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/lrstanley/go-queryparser?style=flat-square">
+  <a href="https://goreportcard.com/report/github.com/lrstanley/go-queryparser/v3">
+    <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/lrstanley/go-queryparser/v3?style=flat-square">
   </a>
   <img alt="Bug reports" src="https://img.shields.io/github/issues/lrstanley/go-queryparser/bug?label=issues&style=flat-square">
   <img alt="Feature requests" src="https://img.shields.io/github/issues/lrstanley/go-queryparser/enhancement?label=feature%20requests&style=flat-square">
@@ -55,9 +55,12 @@ Hello World tags:example,world foo:"something quoted" author:lrstanley
 
 ## Use:
 
+<!-- template:begin:goget -->
+<!-- do not edit anything in this "template" block, its auto-generated -->
 ```console
 $ go get -u github.com/lrstanley/go-queryparser/v3@latest
 ```
+<!-- template:end:goget -->
 
 ## Example:
 
@@ -68,7 +71,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/lrstanley/go-queryparser/v2"
+	"github.com/lrstanley/go-queryparser/v3"
 )
 
 func main() {
