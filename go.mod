@@ -1,3 +1,3 @@
-module github.com/lrstanley/go-queryparser/v2
+module github.com/lrstanley/go-queryparser/v3
 
-go 1.12
+go 1.17
