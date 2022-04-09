@@ -55,10 +55,8 @@ Hello World tags:example,world foo:"something quoted" author:lrstanley
 
 ## Use:
 
-This will pull from master (currently `v2`):
-
 ```console
-$ go get -u github.com/lrstanley/go-queryparser@latest
+$ go get -u github.com/lrstanley/go-queryparser/v3@latest
 ```
 
 ## Example:
