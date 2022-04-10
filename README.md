@@ -2,13 +2,21 @@
 <!-- do not edit anything in this "template" block, its auto-generated -->
 <p align="center">go-queryparser -- "q" http GET variable parser that supports filters/tags for advanced searches :thumbsup:</p>
 <p align="center">
+  <a href="https://github.com/lrstanley/go-queryparser/tags">
+    <img alt="Latest Semver Tag" src="https://img.shields.io/github/v/tag/lrstanley/go-queryparser?style=flat-square">
+  </a>
+  <a href="https://github.com/lrstanley/go-queryparser/commits/master">
+    <img alt="Last commit" src="https://img.shields.io/github/last-commit/lrstanley/go-queryparser?style=flat-square">
+  </a>
 
 
   <a href="https://github.com/lrstanley/go-queryparser/actions?query=workflow%3Atest+event%3Apush">
     <img alt="GitHub Workflow Status (test @ master)" src="https://img.shields.io/github/workflow/status/lrstanley/go-queryparser/test/master?label=test&style=flat-square&event=push">
   </a>
 
-  <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/lrstanley/go-queryparser/master?style=flat-square">
+  <a href="https://codecov.io/gh/lrstanley/go-queryparser">
+    <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/lrstanley/go-queryparser/master?style=flat-square">
+  </a>
 
   <a href="https://pkg.go.dev/github.com/lrstanley/go-queryparser/v3">
     <img alt="Go Documentation" src="https://pkg.go.dev/badge/github.com/lrstanley/go-queryparser/v3?style=flat-square">
@@ -16,17 +24,19 @@
   <a href="https://goreportcard.com/report/github.com/lrstanley/go-queryparser/v3">
     <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/lrstanley/go-queryparser/v3?style=flat-square">
   </a>
-  <img alt="Bug reports" src="https://img.shields.io/github/issues/lrstanley/go-queryparser/bug?label=issues&style=flat-square">
-  <img alt="Feature requests" src="https://img.shields.io/github/issues/lrstanley/go-queryparser/enhancement?label=feature%20requests&style=flat-square">
+</p>
+<p align="center">
+  <a href="https://github.com/lrstanley/go-queryparser/issues?q=is:open+is:issue+label:bug">
+    <img alt="Bug reports" src="https://img.shields.io/github/issues/lrstanley/go-queryparser/bug?label=issues&style=flat-square">
+  </a>
+  <a href="https://github.com/lrstanley/go-queryparser/issues?q=is:open+is:issue+label:enhancement">
+    <img alt="Feature requests" src="https://img.shields.io/github/issues/lrstanley/go-queryparser/enhancement?label=feature%20requests&style=flat-square">
+  </a>
   <a href="https://github.com/lrstanley/go-queryparser/pulls">
     <img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/lrstanley/go-queryparser?style=flat-square">
   </a>
-  <a href="https://github.com/lrstanley/go-queryparser/tags">
-    <img alt="Latest Semver Tag" src="https://img.shields.io/github/v/tag/lrstanley/go-queryparser?style=flat-square">
-  </a>
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/lrstanley/go-queryparser?style=flat-square">
   <a href="https://github.com/lrstanley/go-queryparser/discussions/new?category=q-a">
-    <img alt="Ask a Question" src="https://img.shields.io/badge/discussions-ask_a_question!-green?style=flat-square">
+    <img alt="Ask a Question" src="https://img.shields.io/badge/discussions-ask_a_question!-blue?style=flat-square">
   </a>
   <a href="https://liam.sh/chat"><img src="https://img.shields.io/badge/discord-bytecord-blue.svg?style=flat-square" alt="Discord Chat"></a>
 </p>
