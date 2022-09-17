@@ -1,7 +1,12 @@
+<!-- template:define:options
+{
+  "nodescription": true
+}
+-->
+![logo](https://liam.sh/-/gh/svg/lrstanley/go-queryparser?icon=mdi%3Afilter-cog-outline&icon.height=110&layout=left&icon.color=rgba%280%2C+184%2C+126%2C+1%29)
 <!-- template:begin:header -->
 <!-- do not edit anything in this "template" block, its auto-generated -->
 
-<p align="center">go-queryparser -- "q" http GET variable parser that supports filters/tags for advanced searches :thumbsup:</p>
 <p align="center">
   <a href="https://github.com/lrstanley/go-queryparser/tags">
     <img title="Latest Semver Tag" src="https://img.shields.io/github/v/tag/lrstanley/go-queryparser?style=flat-square">
