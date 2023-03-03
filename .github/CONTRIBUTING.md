@@ -101,6 +101,6 @@ Below are a few guidelines if you would like to contribute:
 [discussions]: https://github.com/lrstanley/go-queryparser/discussions
 [issues]: https://github.com/lrstanley/go-queryparser/issues/new/choose
 [license]: https://github.com/lrstanley/go-queryparser/blob/master/LICENSE
-[pull-requests]: https://github.com/lrstanley/go-queryparser/issues/new/choose
+[pull-requests]: https://github.com/lrstanley/go-queryparser/pulls?q=is%3Aopen+is%3Apr
 [security]: https://github.com/lrstanley/go-queryparser/security/policy
 [support]: https://github.com/lrstanley/go-queryparser/blob/master/.github/SUPPORT.md
