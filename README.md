@@ -56,8 +56,8 @@
   - [Use:](#use)
   - [Example:](#example)
   - [Support &amp; Assistance](#raising_hand_man-support--assistance)
-  - [🤝 Contributing](#handshake-contributing)
-  - [⚖️ License](#balance_scale-license)
+  - [Contributing](#handshake-contributing)
+  - [License](#balance_scale-license)
 <!-- template:end:toc -->
 
 ## What?
