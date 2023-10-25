@@ -20,9 +20,11 @@ import (
 type Query struct {
 	// Raw is the raw (trailing) text of items that weren't filters.
 	Raw     string
+	// Contains the parsed filters
 	Filters map[string][]string
 }
 
+// add a filter manually
 func (q *Query) Add(key, val string) {
 	val = stripDuplicateWS(val)
 	var vals []string
