@@ -20,10 +20,10 @@ import (
 type Query struct {
 	// Raw is the raw (trailing) text of items that weren't filters.
 	Raw     string
-	filters map[string][]string
+	Filters map[string][]string
 }
 
-func (q *Query) add(key, val string) {
+func (q *Query) Add(key, val string) {
 	val = stripDuplicateWS(val)
 	var vals []string
 
@@ -38,23 +38,23 @@ func (q *Query) add(key, val string) {
 	}
 
 	key = strings.ToLower(key)
-	if _, ok := q.filters[key]; !ok {
-		q.filters[key] = make([]string, 0, 1)
+	if _, ok := q.Filters[key]; !ok {
+		q.Filters[key] = make([]string, 0, 1)
 	}
 
-	q.filters[key] = append(q.filters[key], vals...)
+	q.Filters[key] = append(q.Filters[key], vals...)
 }
 
 // Has returns true if there is a filter matching the given name.
 func (q *Query) Has(key string) (exists bool) {
-	_, exists = q.filters[strings.ToLower(key)]
+	_, exists = q.Filters[strings.ToLower(key)]
 	return exists
 }
 
 // Get returns the results of the filter if it exists, and if it successfully
 // found a result.
 func (q *Query) Get(key string) (results []string, ok bool) {
-	results, ok = q.filters[strings.ToLower(key)]
+	results, ok = q.Filters[strings.ToLower(key)]
 	return results, ok
 }
 
@@ -77,14 +77,14 @@ func (q *Query) GetOne(key string) string {
 // will be sorted alphabetically, and the raw text will be placed at the end
 // of the string.
 func (q *Query) String() (out string) {
-	skeys := make([]string, 0, len(q.filters))
-	for key := range q.filters {
+	skeys := make([]string, 0, len(q.Filters))
+	for key := range q.Filters {
 		skeys = append(skeys, key)
 	}
 	sort.Strings(skeys)
 
 	for _, key := range skeys {
-		vals := q.filters[key]
+		vals := q.Filters[key]
 		sort.Strings(vals)
 
 		for _, val := range vals {
