@@ -33,7 +33,7 @@ var cases = []caseArgs{
 		allowed: []string{"foo", "bar"},
 		query: &Query{
 			Raw: "",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"bar"},
 				"bar": {"baz baz1"},
 			},
@@ -53,7 +53,7 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw: "",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"1", "2"},
 				"bar": {"3"},
 			},
@@ -71,7 +71,7 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw: "test",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"bar"},
 			},
 		},
@@ -88,7 +88,7 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw: "test",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"bar"},
 			},
 		},
@@ -105,7 +105,7 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw: "test",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"bar"},
 			},
 		},
@@ -128,7 +128,7 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw: "test : ",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"bar"},
 				"a":   {},
 			},
@@ -146,7 +146,7 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw: "test",
-			filters: map[string][]string{
+			Filters: map[string][]string{
 				"foo": {"bar"},
 			},
 		},
@@ -161,14 +161,14 @@ var cases = []caseArgs{
 		},
 		query: &Query{
 			Raw:     "test test1",
-			filters: map[string][]string{},
+			Filters: map[string][]string{},
 		},
 	},
 	{
 		name:   "empty",
 		input:  ``,
 		tokens: []tokenRef{},
-		query:  &Query{filters: map[string][]string{}},
+		query:  &Query{Filters: map[string][]string{}},
 	},
 }
 

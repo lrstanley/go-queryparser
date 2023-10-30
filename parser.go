@@ -77,7 +77,7 @@ func (p *Parser) accept(tok token) bool {
 func (p *Parser) Parse() *Query {
 	defer p.s.drain()
 
-	qp := &Query{filters: make(map[string][]string)}
+	qp := &Query{Filters: make(map[string][]string)}
 
 	for {
 		tr := p.scan()
@@ -156,11 +156,11 @@ func (p *Parser) scanField(ident tokenRef, qp *Query) {
 	}
 
 	if p.opt.CutFn != nil {
-		qp.add(ident.lit, cutsetFunc(fieldText, p.opt.CutFn))
+		qp.Add(ident.lit, cutsetFunc(fieldText, p.opt.CutFn))
 		return
 	}
 
-	qp.add(ident.lit, fieldText)
+	qp.Add(ident.lit, fieldText)
 }
 
 func cutsetFunc(input string, cutFn func(rune) bool) (out string) {
